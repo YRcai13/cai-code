@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: cai-code
+  # mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cai_code
+    username: root
+    password: 123456
+  profiles:
+    active: dev
+server:
+  port: 8123
+  servlet:
+    context-path: /api
+# springdoc-openapi (http://127.0.0.1:8123/api/doc.html#/home)
+springdoc:
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.cyr.caicode.controller
+# knife4j
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
