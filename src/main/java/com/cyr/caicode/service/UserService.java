@@ -1,6 +1,6 @@
 package com.cyr.caicode.service;
 
-import com.cyr.caicode.model.dto.UserQueryRequest;
+import com.cyr.caicode.model.dto.user.UserQueryRequest;
 import com.cyr.caicode.model.entity.User;
 import com.cyr.caicode.model.vo.LoginUserVO;
 import com.cyr.caicode.model.vo.UserVO;

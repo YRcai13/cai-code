@@ -6,7 +6,7 @@ import cn.hutool.core.util.StrUtil;
 import com.cyr.caicode.exception.BusinessException;
 import com.cyr.caicode.exception.ErrorCode;
 import com.cyr.caicode.mapper.UserMapper;
-import com.cyr.caicode.model.dto.UserQueryRequest;
+import com.cyr.caicode.model.dto.user.UserQueryRequest;
 import com.cyr.caicode.model.entity.User;
 import com.cyr.caicode.model.enums.UserRoleEnum;
 import com.cyr.caicode.model.vo.LoginUserVO;

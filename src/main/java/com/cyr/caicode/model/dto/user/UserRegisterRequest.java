@@ -1,4 +1,4 @@
-package com.cyr.caicode.model.dto;
+package com.cyr.caicode.model.dto.user;
 
 import lombok.Data;
 
