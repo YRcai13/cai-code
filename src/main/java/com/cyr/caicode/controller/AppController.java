@@ -12,10 +12,7 @@ import com.cyr.caicode.constant.UserConstant;
 import com.cyr.caicode.exception.BusinessException;
 import com.cyr.caicode.exception.ErrorCode;
 import com.cyr.caicode.exception.ThrowUtils;
-import com.cyr.caicode.model.dto.app.AppAddRequest;
-import com.cyr.caicode.model.dto.app.AppAdminUpdateRequest;
-import com.cyr.caicode.model.dto.app.AppQueryRequest;
-import com.cyr.caicode.model.dto.app.AppUpdateRequest;
+import com.cyr.caicode.model.dto.app.*;
 import com.cyr.caicode.model.entity.App;
 import com.cyr.caicode.model.entity.User;
 import com.cyr.caicode.model.enums.CodeGenTypeEnum;
@@ -78,6 +75,30 @@ public class AppController {
                                 .build()
                 ));
     }
+
+    /**
+     * 应用部署
+     *
+     * @param appDeployRequest 部署请求
+     * @param request          请求
+     * @return 部署 URL
+     */
+    @PostMapping("/deploy")
+    public BaseResponse<String> deployApp(@RequestBody AppDeployRequest appDeployRequest, HttpServletRequest request) {
+        // 检查部署请求是否为空
+        ThrowUtils.throwIf(appDeployRequest == null, ErrorCode.PARAMS_ERROR);
+        // 获取应用 ID
+        Long appId = appDeployRequest.getAppId();
+        // 检查应用 ID 是否为空
+        ThrowUtils.throwIf(appId == null || appId <= 0, ErrorCode.PARAMS_ERROR, "应用 ID 不能为空");
+        // 获取当前登录用户
+        User loginUser = userService.getLoginUser(request);
+        // 调用服务部署应用
+        String deployUrl = appService.deployApp(appId, loginUser);
+        // 返回部署 URL
+        return ResultUtils.success(deployUrl);
+    }
+
 
     /**
      * 创建应用
