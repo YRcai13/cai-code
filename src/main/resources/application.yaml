@@ -1,6 +1,10 @@
 spring:
   application:
     name: cai-code
+  # session 配置
+  session:
+    # session 30 天过期
+    timeout: 2592000
   # mysql
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -20,6 +24,10 @@ server:
   port: 8123
   servlet:
     context-path: /api
+    # cookie 30 天过期
+    session:
+      cookie:
+        max-age: 2592000
 # springdoc-openapi (http://127.0.0.1:8123/api/doc.html#/home)
 springdoc:
   group-configs:
